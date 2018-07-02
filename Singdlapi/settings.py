@@ -25,7 +25,7 @@ SECRET_KEY = 'lwbunc7s*5au62t@5q$%z%5@jienph1##x0gmq1)1j3krl3!eb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,12 +75,23 @@ WSGI_APPLICATION = 'Singdlapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '120.77.208.162',
+        'PORT': '3306',
+        'NAME': 'SingdlApp',
+        'USER': 'root',
+        'PASSWORD': 'fan123FAN',
     }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 
 
 # Password validation
