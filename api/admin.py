@@ -2,6 +2,8 @@ from django.contrib import admin
 from api.models import articles, movies
 # Register your models here.
 
+admin.site.site_header = '新蝶资源管理系统'
+admin.site.site_title = '新蝶|新媒体'
 
 @admin.register(articles)
 class ArticleAdmin(admin.ModelAdmin):
