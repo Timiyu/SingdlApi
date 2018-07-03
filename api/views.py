@@ -1,10 +1,11 @@
+from . import models
 from django.http import HttpResponse
 import json
 
 # Create your views here.
 def list(request):
-    data = {'name': 'dddddd'}
-    return HttpResponse(json.dumps(data), content_type="application/json")
+    data = models.articles.objects.all().toJON()
+    return HttpResponse(data, content_type="application/json")
 
 def detail(request):
     videourl = ''

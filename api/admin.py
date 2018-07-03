@@ -10,3 +10,4 @@ class ArticleAdmin(admin.ModelAdmin):
 class MoveAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'author', 'pushdate')
 
+
