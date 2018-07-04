@@ -12,7 +12,7 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author', 'comment')  # 搜索字段
     date_hierarchy = 'pushdate'  # 详细时间分层筛选　
     ordering = ('id', 'pushdate',)
-
+    list_editable = ['is_pub', ]
     # list_per_page设置每页显示多少条记录，默认是100条
     list_per_page = 30
 
@@ -29,6 +29,6 @@ class MoveAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author', 'comment')  # 搜索字段
     date_hierarchy = 'pushdate'  # 详细时间分层筛选　
     ordering = ('id', 'pushdate',)
-
+    list_editable = ['is_pub', ]
     # list_per_page设置每页显示多少条记录，默认是100条
     list_per_page = 30
