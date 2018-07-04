@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.db import models
+from tinymce.models import HTMLField
 
 
 # Create your models here.
@@ -9,7 +10,7 @@ class articles(models.Model):
     title = models.CharField(max_length=20, verbose_name='文章标题')
     article_coverimg = models.ImageField(upload_to='articleimage', max_length=100, null=True, verbose_name='文章封面图片地址')
     comment = models.CharField(max_length=200, verbose_name='摘要')
-    content = models.TextField(default='', verbose_name='文章内容')
+    content = HTMLField(max_length=20000, verbose_name='文章内容')
     pushdate = models.DateTimeField(auto_now=True, verbose_name='发布时间')
 
     def __str__(self):

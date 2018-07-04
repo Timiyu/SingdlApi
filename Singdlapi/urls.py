@@ -20,5 +20,6 @@ import api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
     path('api/', include('api.urls')),
 ]

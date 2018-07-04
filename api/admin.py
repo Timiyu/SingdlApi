@@ -1,7 +1,7 @@
 from django.contrib import admin
 from api.models import articles, movies
-# Register your models here.
 
+# Register your models here.
 admin.site.site_header = '新蝶资源管理系统'
 admin.site.site_title = '新蝶|新媒体'
 
@@ -16,6 +16,11 @@ class ArticleAdmin(admin.ModelAdmin):
     # list_per_page设置每页显示多少条记录，默认是100条
     list_per_page = 30
 
+    class Media:
+        js = [
+            '/static/tiny_mce/tiny_mce_src.js',
+            '/static/tiny_mce/tiny_mce_config.js',
+        ]
 
 @admin.register(movies)
 class MoveAdmin(admin.ModelAdmin):
