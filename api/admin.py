@@ -7,7 +7,7 @@ admin.site.site_title = '新蝶|新媒体'
 
 @admin.register(articles)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'comment', 'author', 'pushdate', 'article_coverimg')
+    list_display = ('id', 'title', 'comment', 'author', 'pushdate', 'article_coverimg', 'is_pub')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'author', 'comment')  # 搜索字段
     date_hierarchy = 'pushdate'  # 详细时间分层筛选　
@@ -24,7 +24,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(movies)
 class MoveAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'comment', 'author', 'pushdate', 'movie_coverimg', 'movie')
+    list_display = ('id', 'title', 'comment', 'author', 'pushdate', 'movie_coverimg', 'movie', 'is_pub')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'author', 'comment')  # 搜索字段
     date_hierarchy = 'pushdate'  # 详细时间分层筛选　

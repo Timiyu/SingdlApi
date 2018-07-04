@@ -12,6 +12,7 @@ class articles(models.Model):
     comment = models.CharField(max_length=200, verbose_name='摘要')
     content = HTMLField(max_length=20000, verbose_name='文章内容')
     pushdate = models.DateTimeField(auto_now=True, verbose_name='发布时间')
+    is_pub = models.BooleanField(choices=((False, '否'), (True, '是')), verbose_name='是否立即发布', default=True)
 
     def __str__(self):
         return self.title
@@ -28,6 +29,7 @@ class movies(models.Model):
     comment = models.CharField(max_length=200, verbose_name='摘要')
     movie = models.FileField(upload_to='movie', null=True, verbose_name='视频地址')
     pushdate = models.DateTimeField(auto_now=True, verbose_name='发布时间')
+    is_pub = models.BooleanField(choices=((False, '否'), (True, '是')), verbose_name='是否立即发布', default=True)
 
     def __str__(self):
         return self.title
