@@ -177,7 +177,7 @@ TINYMCE_DEFAULT_CONFIG = {
     {'title': 'Table styles'},
     {'title': 'Table row 1', 'selector': 'tr', 'classes': 'tablerow'}
     ],
-    'width': '',
+    'width': '1000',
     'height': '400'
 }
 

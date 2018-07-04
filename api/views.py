@@ -9,13 +9,14 @@ import json
 # Create your views here.
 def article_list(request):
     data = models.articles.objects.all()
-    data = serializers.serialize('json', data)
+    data = serializers.serialize('json', data, fields=('author', 'title', 'comment', 'article_coverimg'))
+    print(data)
     data = json.dumps(json.loads(data), ensure_ascii=False)
     return HttpResponse(data, content_type="application/json")
 
 def article_detail(request):
     data = models.articles.objects.all()
-    data = serializers.serialize('json', data)
+    data = serializers.serialize('json', data, fields=('author', 'titile', 'content'))
     data = json.dumps(json.loads(data), ensure_ascii=False)
     return HttpResponse(data, content_type="application/json")
 
