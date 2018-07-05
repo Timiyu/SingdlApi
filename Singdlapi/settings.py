@@ -57,6 +57,7 @@ MIDDLEWARE = [
 # CORS允许跨域访问
 CORS_ORIGIN_ALLOW_ALL = True
 
+# 根路径路由
 ROOT_URLCONF = 'Singdlapi.urls'
 
 TEMPLATES = [
