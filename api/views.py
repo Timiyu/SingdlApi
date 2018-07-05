@@ -11,7 +11,7 @@ import json
 def article_list(request):
     data = models.articles.objects.all()
 
-    data = serializers.serialize('json', data, fields=('author', 'title', 'comment', 'article_coverimg'))
+    data = serializers.serialize('json', data, fields=('article_id', 'author', 'title', 'comment', 'article_coverimg'))
 
     data = json.dumps(json.loads(data), ensure_ascii=False)
 
@@ -24,7 +24,7 @@ def article_detail(request):
 
     data = models.articles.objects.all()
 
-    data = serializers.serialize('json', data, fields=('author', 'title', 'content'))
+    data = serializers.serialize('json', data, fields=('article_id', 'author', 'title', 'content'))
 
     data = json.dumps(json.loads(data), ensure_ascii=False)
 
