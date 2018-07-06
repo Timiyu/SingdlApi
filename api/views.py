@@ -4,6 +4,7 @@ from django.shortcuts import HttpResponse
 from django.shortcuts import render
 from . import models
 import json
+from .recode import recode
 
 
 # Create your views here.
@@ -11,9 +12,7 @@ import json
 def article_list(request):
     data = models.articles.objects.all()
 
-    data = serializers.serialize('json', data, fields=('article_id', 'author', 'title', 'comment', 'article_coverimg'))
-
-    data = json.dumps(json.loads(data), ensure_ascii=False)
+    data = recode(data)
 
     response = HttpResponse(data, content_type="application/json")
 
