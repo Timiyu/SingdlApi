@@ -1,9 +1,10 @@
 # -*- coding:utf-8 -*-
 
-import json
 from datetime import date, datetime
+import json
 
 class MyEncoder(json.JSONEncoder):
+
     def default(self, obj):
 
         # if isinstance(obj, datetime.datetime):
@@ -23,6 +24,6 @@ class MyEncoder(json.JSONEncoder):
 
 def recode(data):
 
-    data = json.dumps(list(data), cls=MyEncoder)
+    data = json.dumps(list(data), cls=MyEncoder, ensure_ascii=False)
 
     return data
