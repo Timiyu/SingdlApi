@@ -16,7 +16,7 @@ class articles(models.Model):
     is_pub = models.BooleanField(choices=((False, '否'), (True, '是')), verbose_name='是否立即发布', default=False)
 
     def __str__(self):
-        return self.article_id
+        return self.title
 
     class Meta:
         verbose_name = '文章'
@@ -32,7 +32,7 @@ class article_opt_log(models.Model):
     opt_time = models.DateTimeField(auto_now=True, null=True, verbose_name='操作时间')
 
     def __str__(self):
-        return self.art_opt_id
+        return self.opt_content
 
     class Meta:
         verbose_name = '文章操作记录'
@@ -51,7 +51,7 @@ class movies(models.Model):
     is_pub = models.BooleanField(choices=((False, '否'), (True, '是')), verbose_name='是否立即发布', default=False)
 
     def __str__(self):
-        return self.movie_id
+        return self.title
 
     class Meta:
         verbose_name = '视频'
@@ -68,7 +68,7 @@ class movie_opt_log(models.Model):
     opt_time = models.DateTimeField(auto_now=True, null=True, verbose_name='操作时间')
 
     def __str__(self):
-        return self.mov_opt_id
+        return self.opt_content
 
     class Meta:
         verbose_name = '视频操作记录'
@@ -86,7 +86,7 @@ class users(models.Model):
     user_reg_time = models.DateTimeField(auto_now_add=True, verbose_name='注册时间')
 
     def __str__(self):
-        return self.user_id
+        return self.user_name
 
     class Meta:
         verbose_name = 'APP用户'
