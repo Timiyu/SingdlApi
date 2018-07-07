@@ -3,7 +3,9 @@
 from datetime import date, datetime
 import json
 
-class MyEncoder(json.JSONEncoder):
+
+# 自定义时间处理类
+class dataEncoder(json.JSONEncoder):
 
     def default(self, obj):
 
@@ -22,8 +24,14 @@ class MyEncoder(json.JSONEncoder):
 
             return json.JSONEncoder.default(self, obj)
 
-def recode(data):
+def recode(data, isAscii=True):
 
-    data = json.dumps(list(data), cls=MyEncoder, ensure_ascii=False)
+    if isAscii == True:
+
+        data = json.dumps(list(data), cls=dataEncoder, ensure_ascii=True)
+
+    elif isAscii == False:
+
+        data = json.dumps(list(data), cls=dataEncoder, ensure_ascii=False)
 
     return data

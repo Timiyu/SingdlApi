@@ -9,7 +9,7 @@ from .recode import recode
 # 返回文章列表
 def article_list(request):
 
-    data = articles.objects.all().values()
+    data = articles.objects.filter(is_pub=True).order_by("-pushdate").all().values()
 
     data = recode(data)
 

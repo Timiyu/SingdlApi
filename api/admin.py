@@ -7,12 +7,12 @@ admin.site.site_title = '新蝶|新媒体'
 
 @admin.register(articles)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('article_id', 'title', 'comment', 'author', 'pushdate', 'article_coverimg', 'is_pub')
-    list_display_links = ('article_id', 'title')
-    search_fields = ('title', 'author', 'comment')  # 搜索字段
+    list_display = ('article_id', 'title', 'comment', 'author', 'pushdate', 'article_coverimg', 'is_pub',)
+    list_display_links = ('article_id', 'title',)
+    search_fields = ('title', 'author', 'comment',)  # 搜索字段
     date_hierarchy = 'pushdate'  # 详细时间分层筛选　
     ordering = ('article_id', 'pushdate',)
-
+    list_editable = ('is_pub',)
     # list_per_page设置每页显示多少条记录，默认是100条
     list_per_page = 30
 
@@ -29,7 +29,7 @@ class MovieeAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author', 'comment')  # 搜索字段
     date_hierarchy = 'pushdate'  # 详细时间分层筛选　
     ordering = ('movie_id', 'pushdate',)
-
+    list_editable = ('is_pub',)
     # list_per_page设置每页显示多少条记录，默认是100条
     list_per_page = 30
 
