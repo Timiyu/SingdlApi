@@ -11,7 +11,7 @@ def article_list(request):
 
     data = articles.objects.filter(is_pub=True).order_by("-pushdate").all().values()
 
-    data = recode(data)
+    data = recode(data, isAscii=False)
 
     response = HttpResponse(data, content_type="application/json")
 
@@ -22,7 +22,7 @@ def article_detail(request):
 
     data = articles.objects.all().values()
 
-    data = recode(data)
+    data = recode(data, isAscii=False)
 
     response = HttpResponse(data, content_type="application/json")
 
@@ -33,7 +33,7 @@ def movie_list(request):
 
     data = movies.objects.all().values()
 
-    data = recode(data)
+    data = recode(data, isAscii=False)
 
     response = HttpResponse(data, content_type="application/json")
 
@@ -44,7 +44,7 @@ def movie_detail(request):
 
     data = movies.objects.all().values()
 
-    data = recode(data)
+    data = recode(data, isAscii=False)
 
     response = HttpResponse(data, content_type="application/json")
 

@@ -24,6 +24,8 @@ class dataEncoder(json.JSONEncoder):
 
             return json.JSONEncoder.default(self, obj)
 
+
+# 对django.models对象进行处理返回json字符串的方法
 def recode(data, isAscii=True):
 
     if isAscii == True:
