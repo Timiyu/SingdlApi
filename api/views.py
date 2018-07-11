@@ -20,7 +20,9 @@ def article_list(request):
 # 返回文章详情
 def article_detail(request):
 
-    data = articles.objects.all().values()
+    get_id = request.GET.get()
+
+    data = articles.objects.filter(id=get_id).values()
 
     data = recode(data, isAscii=False)
 
@@ -42,7 +44,9 @@ def movie_list(request):
 # 返回视频详情
 def movie_detail(request):
 
-    data = movies.objects.all().values()
+    get_id = request.GET.get()
+
+    data = movies.objects.filter(id=get_id).values()
 
     data = recode(data, isAscii=False)
 
