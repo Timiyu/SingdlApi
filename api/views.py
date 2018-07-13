@@ -52,7 +52,7 @@ def movie_detail(request):
 
 def article_banner(request):
 
-    data = articles.objects.last().values()
+    data = articles.objects.all().order_by("-article_id").values()
 
     data = recode(data, isAscii=True)
 
@@ -62,7 +62,7 @@ def article_banner(request):
 
 def movie_banner(request):
 
-    data = movies.objects.last().values()
+    data = movies.objects.all().order_by("-movie_id").values()
 
     data = recode(data, isAscii=True)
 
