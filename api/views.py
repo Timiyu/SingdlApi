@@ -19,8 +19,10 @@ def article_list(request):
 
 # 返回文章详情
 def article_detail(request):
+    
+    get_id = request.GET.get('guid')
 
-    data = articles.objects.filter().values()
+    data = articles.objects.filter(article_id=get_id).values()
 
     data = recode(data, isAscii=True)
 
