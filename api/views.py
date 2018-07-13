@@ -9,7 +9,7 @@ from .recode import recode
 # 返回文章列表
 def article_list(request):
 
-    data = articles.objects.filter(is_pub=True).order_by("-article_id").all().values()
+    data = articles.objects.filter(is_pub=True).order_by("-article_id").values()
 
     data = recode(data, isAscii=True)
 
@@ -31,7 +31,7 @@ def article_detail(request):
 # 返回视频列表
 def movie_list(request):
 
-    data = movies.objects.all().values()
+    data = movies.objects.filter(is_pub=True).order_by("-movie_id").values()
 
     data = recode(data, isAscii=True)
 
@@ -52,7 +52,7 @@ def movie_detail(request):
 
 def article_banner(request):
 
-    data = articles.objects.filter().values()
+    data = articles.objects.last().values()
 
     data = recode(data, isAscii=True)
 
@@ -62,10 +62,10 @@ def article_banner(request):
 
 def movie_banner(request):
 
-    data = movies.objects.filter().values()
+    data = movies.objects.last().values()
 
     data = recode(data, isAscii=True)
 
     response = HttpResponse(data, content_type="application/json")
 
-    return  response
+    return response
