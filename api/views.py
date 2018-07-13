@@ -19,8 +19,8 @@ def article_list(request):
 
 # 返回文章详情
 def article_detail(request):
-    
-    get_id = request.GET.get('guid')
+
+    get_id = request.GET.get('post_id')
 
     data = articles.objects.filter(article_id=get_id).values()
 
@@ -29,6 +29,7 @@ def article_detail(request):
     response = HttpResponse(data, content_type="application/json")
 
     return response
+
 
 # 返回视频列表
 def movie_list(request):
@@ -44,7 +45,9 @@ def movie_list(request):
 # 返回视频详情
 def movie_detail(request):
 
-    data = movies.objects.filter().values()
+    get_id = request.GET.get('post_id')
+
+    data = movies.objects.filter(article_id=get_id).values()
 
     data = recode(data, isAscii=True)
 
