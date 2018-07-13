@@ -20,9 +20,7 @@ def article_list(request):
 # 返回文章详情
 def article_detail(request):
 
-    get_id = request.GET.get()
-
-    data = articles.objects.filter(id=get_id).values()
+    data = articles.objects.filter().values()
 
     data = recode(data, isAscii=True)
 
@@ -44,12 +42,30 @@ def movie_list(request):
 # 返回视频详情
 def movie_detail(request):
 
-    get_id = request.GET.get()
-
-    data = movies.objects.filter(id=get_id).values()
+    data = movies.objects.filter().values()
 
     data = recode(data, isAscii=True)
 
     response = HttpResponse(data, content_type="application/json")
 
     return response
+
+def article_banner(request):
+
+    data = articles.objects.filter().values()
+
+    data = recode(data, isAscii=True)
+
+    response = HttpResponse(data, content_type="application/json")
+
+    return response
+
+def movie_banner(request):
+
+    data = movies.objects.filter().values()
+
+    data = recode(data, isAscii=True)
+
+    response = HttpResponse(data, content_type="application/json")
+
+    return  response
