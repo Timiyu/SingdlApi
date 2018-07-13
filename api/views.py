@@ -20,7 +20,7 @@ def article_list(request):
 # 返回文章详情
 def article_detail(request):
 
-    get_id = request.GET.get('post_id')
+    get_id = request.GET.get('guid')
 
     data = articles.objects.filter(article_id=get_id).values()
 
@@ -45,7 +45,7 @@ def movie_list(request):
 # 返回视频详情
 def movie_detail(request):
 
-    get_id = request.GET.get('post_id')
+    get_id = request.GET.get('guid')
 
     data = movies.objects.filter(article_id=get_id).values()
 
