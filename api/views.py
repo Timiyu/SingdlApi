@@ -18,6 +18,8 @@ def article_list(request):
     return response
 
 # 返回文章详情
+# 废弃接口
+'''
 def article_detail(request):
 
     get_id = request.GET.get('guid')
@@ -29,6 +31,8 @@ def article_detail(request):
     response = HttpResponse(data, content_type="application/json")
 
     return response
+
+'''
 
 
 # 返回视频列表
@@ -42,7 +46,10 @@ def movie_list(request):
 
     return response
 
+
 # 返回视频详情
+# 废弃接口
+'''
 def movie_detail(request):
 
     get_id = request.GET.get('guid')
@@ -55,6 +62,11 @@ def movie_detail(request):
 
     return response
 
+'''
+
+# 返回banner信息
+# 废弃接口
+'''
 def article_banner(request):
 
     data = articles.objects.all().order_by("-article_id")[0:5].values()
@@ -64,6 +76,9 @@ def article_banner(request):
     response = HttpResponse(data, content_type="application/json")
 
     return response
+
+'''
+
 
 def movie_banner(request):
 
