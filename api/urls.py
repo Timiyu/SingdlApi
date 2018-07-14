@@ -21,7 +21,7 @@ urlpatterns = [
     path('article_list/', views.article_list, name='article_list'),
     path('movie_list/', views.movie_list, name='movie_list'),
     #path('article_detail/', views.article_detail, name='articel_detail'), 废弃
-    path('movie_detail/', views.movie_detail, name='movie_detail'),
-    path('article_banner/', views.article_banner, name='article_banner'),
+    #path('movie_detail/', views.movie_detail, name='movie_detail'),
+    #path('article_banner/', views.article_banner, name='article_banner'),
     #path('movie_banner/', views.movie_banner, name='movie_banner'),废弃
 ]

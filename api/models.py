@@ -95,7 +95,7 @@ class users(models.Model):
 
 class feedback(models.Model):
     feed_id = models.BigAutoField(primary_key=True, verbose_name='反馈编号')
-    user_id = models.ForeignKey('user', null=True, on_delete=False, verbose_name='用户编号', default='匿名')
+    user_id = models.ForeignKey('users', null=True, on_delete=False, verbose_name='用户编号', default='匿名')
     feedback = models.CharField(max_length=400, verbose_name='反馈内容')
     feed_time = models.DateTimeField(default=timezone.now, verbose_name='反馈时间')
 

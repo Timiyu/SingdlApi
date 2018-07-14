@@ -77,7 +77,6 @@ def article_banner(request):
 
     return response
 
-'''
 
 
 def movie_banner(request):
@@ -89,3 +88,4 @@ def movie_banner(request):
     response = HttpResponse(data, content_type="application/json")
 
     return response
+'''
