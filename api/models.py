@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.db import models
+import django.utils.timezone as timezone
 from tinymce.models import HTMLField
 
 
@@ -91,3 +92,17 @@ class users(models.Model):
     class Meta:
         verbose_name = 'APP用户'
         verbose_name_plural = "APP用户"
+
+class feedback(models.Model):
+    feed_id = models.BigAutoField(primary_key=True, verbose_name='反馈编号')
+    user_id = models.ForeignKey('user', null=True, verbose_name='用户编号', default='匿名')
+    feedback = models.CharField(max_length=400, verbose_name='反馈内容')
+    feed_time = models.DateTimeField(default=timezone.now, verbose_name='反馈时间')
+
+    def __str__(self):
+        return self.feedback
+
+    class Meta:
+        verbose_name = '反馈'
+        verbose_name_plural = "反馈"
+

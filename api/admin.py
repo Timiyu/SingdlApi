@@ -60,3 +60,12 @@ class usersAdmin(admin.ModelAdmin):
     ordering = ('user_id', 'user_reg_time')
 
     list_per_page = 30
+
+
+@admin.register(feedback)
+class usersAdmin(admin.ModelAdmin):
+    list_display = ('feed_id', 'user_id', 'feedback', 'feed_time')
+    search_fields = ('feed_id', 'user_id', 'feedback')
+    ordering = ('feed_id', 'feed_time')
+
+    list_per_page = 30
