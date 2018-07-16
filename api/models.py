@@ -82,6 +82,7 @@ class audios(models.Model):
     title = models.CharField(max_length=100, verbose_name='音频标题')
     author = models.CharField(max_length=100, verbose_name='音频作者')
     comment = models.CharField(max_length=200, verbose_name='摘要')
+    audio = models.FileField(upload_to='audio', null=True, verbose_name='音频地址')
     audio_coverimg = models.ImageField(upload_to='audioimage', max_length=100, null=True, verbose_name='音频封面图片地址')
     pushdate = models.DateTimeField(auto_now=True, null=True, verbose_name='操作时间')
     is_pub = models.BooleanField(choices=((False, '否'), (True, '是')), verbose_name='是否立即发布', default=True)

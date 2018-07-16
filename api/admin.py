@@ -33,6 +33,17 @@ class MovieeAdmin(admin.ModelAdmin):
     # list_per_page设置每页显示多少条记录，默认是100条
     list_per_page = 30
 
+@admin.register(audios)
+class MovieeAdmin(admin.ModelAdmin):
+    list_display = ('audio_id', 'title', 'comment', 'author', 'pushdate', 'audio_coverimg', 'audio', 'is_pub')
+    list_display_links = ('audio_id', 'title')
+    search_fields = ('title', 'author', 'comment')  # 搜索字段
+    date_hierarchy = 'pushdate'  # 详细时间分层筛选　
+    ordering = ('audio_id', 'pushdate',)
+    list_editable = ('is_pub',)
+    # list_per_page设置每页显示多少条记录，默认是100条
+    list_per_page = 30
+
 
 @admin.register(article_opt_log)
 class aritcle_opt_logAdmin(admin.ModelAdmin):
