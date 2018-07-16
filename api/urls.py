@@ -20,6 +20,7 @@ from . import views
 urlpatterns = [
     path('article_list/', views.article_list, name='article_list'),
     path('movie_list/', views.movie_list, name='movie_list'),
+    path('audio_list/', views.audio_list, name='audio_list'),
     #path('feed_back/', views.feedback, name='feed_back'),
     #path('article_detail/', views.article_detail, name='articel_detail'), 废弃
     #path('movie_detail/', views.movie_detail, name='movie_detail'),

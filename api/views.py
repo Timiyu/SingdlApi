@@ -47,6 +47,17 @@ def movie_list(request):
     return response
 
 
+# 返回音频列表
+def audio_list(request):
+
+    data = audios.objects.filter(is_pub=True).order_by("-audio_id").values()
+
+    data = recode(data, isAscii=True)
+
+    response = HttpResponse(data, content_type="application/json")
+
+    return response
+
 # 返回视频详情
 # 废弃接口
 '''

@@ -76,6 +76,24 @@ class movie_opt_log(models.Model):
         verbose_name_plural = "视频操作记录"
 
 
+
+class audios(models.Model):
+    audio_id = models.BigAutoField(primary_key=True, verbose_name='音频编号')
+    title = models.CharField(max_length=100, verbose_name='音频标题')
+    author = models.CharField(max_length=100, verbose_name='音频作者')
+    comment = models.CharField(max_length=200, verbose_name='摘要')
+    audio_coverimg = models.ImageField(upload_to='audioimage', max_length=100, null=True, verbose_name='音频封面图片地址')
+    pushdate = models.DateTimeField(auto_now=True, null=True, verbose_name='操作时间')
+    is_pub = models.BooleanField(choices=((False, '否'), (True, '是')), verbose_name='是否立即发布', default=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = '音频'
+        verbose_name_plural = "音频"
+
+
 class users(models.Model):
     user_id = models.BigAutoField(primary_key=True, verbose_name='用户编号')
     user_name = models.CharField(max_length=10, verbose_name='用户名')
