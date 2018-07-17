@@ -4,6 +4,7 @@ from django.shortcuts import HttpResponse
 from .models import *
 from .recode import recode
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -61,6 +62,7 @@ def audio_list(request):
 
 
 # 保存反馈信息
+@csrf_exempt
 def feed_back(request):
 
     response = {'flag': False}
