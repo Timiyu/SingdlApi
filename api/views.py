@@ -75,7 +75,6 @@ def feed_back(request):
 
         phone = request.POST.get("phone")
 
-
     try:
         models.feedbacks.objects.create(feedback=question, user_name=name, user_phone=phone)
 
