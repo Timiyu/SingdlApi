@@ -5,6 +5,7 @@ from .models import *
 from .recode import recode
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 # Create your views here.
@@ -69,14 +70,16 @@ def feed_back(request):
 
     if request.method == 'POST':
 
-        question = request.POST.get("feedback")
+        post_data = json.loads(request.body)
 
-        name = request.POST.get("name")
+        question = post_data['feedback']
 
-        phone = request.POST.get("phone")
+        name = post_data['name']
+
+        phone = post_data['phone']
 
     try:
-        models.feedbacks.objects.create(feedback=question, user_name=name, user_phone=phone)
+        feedbacks.objects.create(feedback=question, user_name=name, user_phone=phone)
 
         response['flag'] = True
 
