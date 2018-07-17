@@ -3,6 +3,7 @@
 from django.shortcuts import HttpResponse
 from .models import *
 from .recode import recode
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -57,6 +58,46 @@ def audio_list(request):
     response = HttpResponse(data, content_type="application/json")
 
     return response
+
+
+# 保存反馈信息
+def feed_back(request):
+
+    response = {'flag': False}
+
+    if request.method == 'POST':
+
+        question = request.POST.get("feedback")
+
+        name = request.POST.get("name")
+
+        phone = request.POST.get("phone")
+
+    elif request.method == 'GET':
+
+        question = request.GET.get("feedback")
+
+        name = request.GET.get("name")
+
+        phone = request.GET.get("phone")
+
+    print(question, name, phone)
+
+    try:
+        models.feedbacks.objects.create(feedback=question, user_name=name, user_phone=phone)
+
+        response['flag'] = True
+
+        return JsonResponse(response)
+
+    except:
+
+        return JsonResponse(response)
+
+
+
+
+
 
 # 返回视频详情
 # 废弃接口

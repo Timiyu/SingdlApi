@@ -112,9 +112,11 @@ class users(models.Model):
         verbose_name = 'APP用户'
         verbose_name_plural = "APP用户"
 
-class feedback(models.Model):
+class feedbacks(models.Model):
     feed_id = models.BigAutoField(primary_key=True, verbose_name='反馈编号')
     user_id = models.ForeignKey('users', null=True, on_delete=False, verbose_name='用户编号', default='匿名')
+    user_phone = models.CharField(max_length=11, null=True, verbose_name='用户手机号')
+    user_name = models.CharField(max_length=20, null= True, verbose_name='用户姓名')
     feedback = models.CharField(max_length=400, verbose_name='反馈内容')
     feed_time = models.DateTimeField(default=timezone.now, verbose_name='反馈时间')
 

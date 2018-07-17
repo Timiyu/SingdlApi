@@ -73,7 +73,7 @@ class usersAdmin(admin.ModelAdmin):
     list_per_page = 30
 
 
-@admin.register(feedback)
+@admin.register(feedbacks)
 class usersAdmin(admin.ModelAdmin):
     list_display = ('feed_id', 'user_id', 'feedback', 'feed_time')
     search_fields = ('feed_id', 'user_id', 'feedback')
