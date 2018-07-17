@@ -1,12 +1,11 @@
 # -*- coding:utf-8 -*-
 
 from django.shortcuts import HttpResponse
-from .models import *
+from api.models import *
 from .recode import recode
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-
 
 # Create your views here.
 # 返回文章列表
@@ -22,7 +21,7 @@ def article_list(request):
 
 # 返回文章详情
 # 废弃接口
-'''
+
 def article_detail(request):
 
     get_id = request.GET.get('guid')
@@ -35,7 +34,7 @@ def article_detail(request):
 
     return response
 
-'''
+
 
 
 # 返回视频列表
@@ -92,11 +91,11 @@ def feed_back(request):
 
 
 
-
+'''
 
 # 返回视频详情
 # 废弃接口
-'''
+
 def movie_detail(request):
 
     get_id = request.GET.get('guid')
@@ -109,11 +108,11 @@ def movie_detail(request):
 
     return response
 
-'''
+
 
 # 返回banner信息
 # 废弃接口
-'''
+
 def article_banner(request):
 
     data = articles.objects.all().order_by("-article_id")[0:5].values()
@@ -135,4 +134,5 @@ def movie_banner(request):
     response = HttpResponse(data, content_type="application/json")
 
     return response
+
 '''

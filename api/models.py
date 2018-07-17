@@ -26,8 +26,8 @@ class articles(models.Model):
 
 class article_opt_log(models.Model):
     art_opt_id = models.BigAutoField(primary_key=True, verbose_name='文章操作编号')
-    article_id = models.ForeignKey('articles', null=True, verbose_name='文章编号', on_delete=False)
-    user_id = models.ForeignKey('users', null=True, verbose_name='用户编号', on_delete=False)
+    article_id = models.ForeignKey('articles', null=True, verbose_name='文章编号', on_delete=models.SET_DEFAULT, default=None)
+    user_id = models.ForeignKey('users', null=True, verbose_name='用户编号', on_delete=models.SET_DEFAULT, default=None)
     opt_content = models.CharField(null=True, max_length=400, verbose_name='操作内容')
     opt_type = models.IntegerField(choices=((1, '浏览'), (2, '关注')), null=True, verbose_name='操作类型')
     opt_time = models.DateTimeField(auto_now=True, null=True, verbose_name='操作时间')
@@ -62,8 +62,8 @@ class movies(models.Model):
 
 class movie_opt_log(models.Model):
     mov_opt_id = models.BigAutoField(primary_key=True, verbose_name='视频操作编号')
-    movie_id = models.ForeignKey('movies', null=True, verbose_name='视频编号', on_delete=False)
-    user_id = models.ForeignKey('users', null=True, verbose_name='用户编号', on_delete=False)
+    movie_id = models.ForeignKey('movies', null=True, verbose_name='视频编号', on_delete=models.SET_DEFAULT, default=None)
+    user_id = models.ForeignKey('users', null=True, verbose_name='用户编号', on_delete=models.SET_DEFAULT, default=None)
     opt_content = models.CharField(null=True, max_length=400, verbose_name='操作内容')
     opt_type = models.IntegerField(choices=((1, '浏览'), (2, '关注')), null=True, verbose_name='操作类型')
     opt_time = models.DateTimeField(auto_now=True, null=True, verbose_name='操作时间')
@@ -114,9 +114,9 @@ class users(models.Model):
 
 class feedbacks(models.Model):
     feed_id = models.BigAutoField(primary_key=True, verbose_name='反馈编号')
-    user_id = models.ForeignKey('users', null=True, on_delete=False, verbose_name='用户编号', default='匿名')
+    user_id = models.ForeignKey('users', null=True, on_delete=models.SET_DEFAULT, default=None, verbose_name='用户编号')
     user_phone = models.CharField(max_length=11, null=True, verbose_name='用户手机号')
-    user_name = models.CharField(max_length=20, null= True, verbose_name='用户姓名')
+    user_name = models.CharField(max_length=20, null=True, verbose_name='用户姓名')
     feedback = models.CharField(max_length=400, verbose_name='反馈内容')
     feed_time = models.DateTimeField(default=timezone.now, verbose_name='反馈时间')
 
