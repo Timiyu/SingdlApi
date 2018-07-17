@@ -75,15 +75,6 @@ def feed_back(request):
 
         phone = request.POST.get("phone")
 
-    elif request.method == 'GET':
-
-        question = request.GET.get("feedback")
-
-        name = request.GET.get("name")
-
-        phone = request.GET.get("phone")
-
-    print(question, name, phone)
 
     try:
         models.feedbacks.objects.create(feedback=question, user_name=name, user_phone=phone)
