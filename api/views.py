@@ -2,10 +2,12 @@
 
 from django.shortcuts import HttpResponse
 from api.models import *
-from .recode import recode
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from .recode import *
+from .comre import *
+
 
 # Create your views here.
 # 返回文章列表
@@ -65,7 +67,7 @@ def audio_list(request):
 @csrf_exempt
 def feed_back(request):
 
-    response = {'flag': False}
+    response = {'flag': 0}   # 初始状态
 
     if request.method == 'POST':
 
@@ -77,16 +79,37 @@ def feed_back(request):
 
         phone = post_data['phone']
 
-    try:
-        feedbacks.objects.create(feedback=question, user_name=name, user_phone=phone)
+        if len(question) == 0:
 
-        response['flag'] = True
+            response['flag'] = 1    # 反馈内容为空
 
-        return JsonResponse(response)
+            return JsonResponse(response)
 
-    except:
+        elif len(name) == 0:
 
-        return JsonResponse(response)
+            response['flag'] = 2    # 姓名为空
+
+            return JsonResponse(response)
+
+        elif phonecheck(phone)!=True:
+
+            response['flag'] = 3    # 手机号非法
+
+            return JsonResponse(response)
+
+        else:
+
+            try:
+
+                feedbacks.objects.create(feedback=question, user_name=name, user_phone=phone)
+
+                response['flag'] = 4    # 入库成功
+
+                return JsonResponse(response)
+
+            except:
+
+                return JsonResponse(response)   # 重置为初始状态
 
 
 
