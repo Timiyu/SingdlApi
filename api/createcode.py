@@ -3,7 +3,7 @@
 from random import randint
 
 def create_one():
-    i = randint(0,9)
+    i = randint(0, 9)
     i = str(i)
     return i
 

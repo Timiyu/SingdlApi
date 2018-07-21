@@ -20,7 +20,7 @@ def send_message(phone, code):
 
 if __name__ == "__main__":
 
-    phone = '13534187661'
+    phone = '15986751551'
 
     code = '123456'
 
