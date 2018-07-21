@@ -7,6 +7,10 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from .recode import *
 from .comre import *
+from .sendcode import send_message
+from .createcode import create_code
+
+
 
 
 # Create your views here.
@@ -112,7 +116,41 @@ def feed_back(request):
                 return JsonResponse(response)   # 重置为初始状态
 
 
+# 发送短信验证码
+@csrf_exempt
+def get_send_msgcode(request):
 
+    response = {'flag': 0, 'code': ''}   # 初始状态
+
+    code = create_code()
+
+    if request.method == 'POST':
+
+        post_data = json.loads(request.body)
+
+        phone = post_data['phone']
+
+        if phonecheck(phone)!=True:
+
+            response['flag'] = 3    # 手机号非法
+
+            return JsonResponse(response)   # 返回错误信息
+
+        else:
+
+            try:
+
+                backcode = send_message(phone, code)
+
+                if backcode['error'] == 0:
+
+                    response['flag'] = 1    # 发送成功
+
+                return JsonResponse(response)
+
+            except:
+
+                return JsonResponse(response)   # 重置为初始状态
 
 '''
 
