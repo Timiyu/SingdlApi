@@ -89,9 +89,9 @@ def feed_back(request):
 
             return JsonResponse(response)
 
-        elif len(name) == 0:
+        elif namecheck(name)!=True:
 
-            response['flag'] = 2    # 姓名为空
+            response['flag'] = 2    # 姓名非法
 
             return JsonResponse(response)
 
