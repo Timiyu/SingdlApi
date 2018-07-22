@@ -4,11 +4,11 @@ from django.shortcuts import HttpResponse
 from api.models import *
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from api.recode import *
+from api.comre import *
+from api.sendcode import send_message
+from api.createcode import create_code
 import json
-from .recode import *
-from .comre import *
-from .sendcode import send_message
-from .createcode import create_code
 
 
 
@@ -113,6 +113,8 @@ def feed_back(request):
 
             except:
 
+                response['flag'] = 0
+
                 return JsonResponse(response)   # 重置为初始状态
 
 
@@ -122,13 +124,15 @@ def get_send_msgcode(request):
 
     response = {'flag': 0, 'code': ''}   # 初始状态
 
-    code = create_code()
+
 
     if request.method == 'POST':
 
         post_data = json.loads(request.body)
 
         phone = post_data['phone']
+
+        code = ''
 
         if phonecheck(phone)!=True:
 
@@ -139,6 +143,7 @@ def get_send_msgcode(request):
         else:
 
             try:
+                code = create_code()
 
                 backcode = send_message(phone, code)
 
@@ -146,9 +151,11 @@ def get_send_msgcode(request):
 
                     response['flag'] = 1    # 发送成功
 
-                return JsonResponse(response)
+                return JsonResponse(response)           # 返回code
 
             except:
+
+                response['flag'] = 2
 
                 return JsonResponse(response)   # 重置为初始状态
 

@@ -37,3 +37,10 @@ def recode(data, isAscii=True):
         data = json.dumps(list(data), cls=dataEncoder, ensure_ascii=False)
 
     return data
+
+
+if __name__ == "__main__":
+
+    data = {'phone': '15986751551'}
+
+    recode(data)
