@@ -147,15 +147,19 @@ def get_send_msgcode(request):
 
                 backcode = send_message(phone, code)
 
+                print(backcode['error'])
+
                 if backcode['error'] == 0:
 
-                    response['flag'] = 1    # 发送成功
+                    response['flag'] = 1                # 发送成功
+
+                    response['code'] = code             # 返回验证码
 
                 return JsonResponse(response)           # 返回code
 
             except:
 
-                response['flag'] = 2
+                response['flag'] = 2            # 发送失败
 
                 return JsonResponse(response)   # 重置为初始状态
 
